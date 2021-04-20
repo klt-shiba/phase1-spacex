@@ -57,12 +57,13 @@ input#submitBtn {
 #img-container img {
     width: 100%;
     height: auto;
+    border-radius: 24px;
 }
 #img-container .img-tiles {
     height: 400px;
     width: auto;
-    border-radius: 12px;
-    margin: 12px;
+    padding: 0;
+    margin: 0;;
 }
 #search-form input[type=text] {
     color: red;
@@ -74,4 +75,12 @@ input#submitBtn {
     border-bottom: 5px blue solid;
     text-align: center;
     width: auto;
+}
+
+button {
+    padding: 0;
+    border-radius: 24px;
+    margin: 12px;
+    border: none;
+    clip-path: ;
 }
