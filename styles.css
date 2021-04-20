@@ -1,0 +1,77 @@
+body {
+    width: auto;
+    height: 100vh;
+    background-color: black;
+}
+/* Typography Specific */
+h1, h2, h3, h4, h5, h6, label {
+    font-weight: 700;
+    color: white;
+}
+#header h1 {
+    font-size: 8rem;
+}
+#header h2, #header label{
+    font-size: 5rem;
+    color: #ddd;
+}
+div.search {
+    width: 100%;
+    padding: 16px;
+}
+input {
+    border: none;
+}
+input#search {
+    display: inline-flex;
+    padding: 10px 16px;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: #000;
+    font-weight: 500;
+    width: 100%;
+}
+input#search::placeholder {
+    color: #aaa;
+}
+input#submitBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    border: 0;
+    background-color: lightskyblue;
+}
+#img-container {
+    padding: 16px;
+    width: 100%;
+}
+.search-bar {
+    background-color: white;
+    display: flex;
+    border-radius: 24px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
+}
+#img-container {
+    text-align: center;
+}
+#img-container img {
+    width: 100%;
+    height: auto;
+}
+#img-container .img-tiles {
+    height: 400px;
+    width: auto;
+    border-radius: 12px;
+    margin: 12px;
+}
+#search-form input[type=text] {
+    color: red;
+    background: transparent;
+    font-size: 5rem;
+    font-weight: 600;
+    margin: 24px;
+    display: inline;
+    border-bottom: 5px blue solid;
+    text-align: center;
+    width: auto;
+}
