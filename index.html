@@ -21,11 +21,11 @@
   <header id="header">
     <div class="container-fluid">
       <h1>SpaceX</h1>
-      <form id="search-form">
+      <!-- <form id="search-form">
         <Label>I want to see more photos of</label>
         <input type="text" placeholder="James" id="search-photos">
         <input type="submit" id="submitBtn"> 
-          </form>
+      </form> -->
       <!-- <nav></nav>
       <div class="search">
         <div class="search-bar">
@@ -37,9 +37,31 @@
       </div> -->
     </div>
   </header>
-  <section id="body">
+  <section id="space-events">
     <div class="container-fluid">
-      <div id="img-container">
+      <div class="row">
+        <div class="col-md-4 v-alignment">
+          <div class="section-heading align-r">
+            <H2>Recent Events</H2>
+            <p class="subheading">Lorem ipsum content explaining some stuff</p>
+            <button class="section-cta cta" id="show-more-events">Show me more events</button>
+          </div>
+        </div>
+        <div id="img-container" class="col-md-8 align-l"></div>
+      </div>
+    </div>
+  </section>
+  <section id="space-crew">
+    <div class="container-fluid">
+      <div class="row">
+        <div id="img-container" class="col-md-8 img-container"></div>
+        <div class="col-md-4 v-alignment">
+          <div class="section-heading align-l">
+            <H2>Who's who</H2>
+            <p class="subheading">Lorem ipsum content explaining some stuff</p>
+            <button class="section-cta cta" id="show-more-crew">Show me more crew</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
