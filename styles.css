@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6, label {
     color: white;
 }
 #header h1 {
-    font-size: 8rem;
+    font-size: 16rem;
 }
 #header h2, section h2, #header label{
     font-size: 5rem;
@@ -56,7 +56,6 @@ section {
 #img-container img, .img-container img{
     width: 100%;
     height: auto;
-    border-radius: 24px;
 }
 #img-container .img-tiles, .img-container .img-tiles {
     height: 400px;
@@ -98,9 +97,10 @@ button.cta:hover {
     transition: background-color 500ms ease-in-out;
 
 }
-H2 + .subheading {
+.subheading {
     font-size: 2.4rem;
     color: white;
+    line-height: 4.4rem;
 }
 .v-alignment {
     align-items: center;
@@ -152,7 +152,7 @@ section.hidden {
     overflow: hidden;
     max-height: 420px;;
 }
-.clone-list::marker {
+.clone-list::marker, .section-detail .information-card .article-link::marker {
     content: none !important;
     width: 0 !important;
     height: 0 !important;
@@ -163,6 +163,56 @@ section.hidden {
     color:white;
 }
 
+.section-detail h2{
+    font-size: 16rem;
+    word-wrap: anywhere;
+    line-height: 16rem;
+}
+.section-detail h3 {
+    font-size: 4rem;
+}
+.section-detail .information-card {
+    margin: 32px 0;
+}
+.section-detail .details {
+    color: white;
+    font-size: 2.4rem;
+}
+.section-detail .overline-details, .section-detail .underline-details {
+    display: flex;
+    align-items: center;
+    padding: 2.4rem 1.6rem;
+}
+.section-detail .underline-details:first-of-type {
+    margin-top: 0px;
+}
+.status-indicator {
+    padding: 6px 14px;
+    color: white;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    float: right;
+}
+.status-indicator.success {
+    background-color: green;
+}
+.status-indicator.failure {
+    background-color: red;
+}
+.section-detail .underline-details {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin: 3.2rem 0;
+}
+.icon {
+    
+}
+.section-detail .information-card .article-link {
+        float: right;
+        position: absolute;
+        right: 24px;
+}
 /* Loader */
 .slider{
   position:absolute;
