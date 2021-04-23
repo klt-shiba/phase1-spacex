@@ -17,23 +17,15 @@ h1, h2, h3, h4, h5, h6, label {
 }
 div.search {
     width: 100%;
-    padding: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
 }
 input {
     border: none;
 }
-input#search {
-    display: inline-flex;
-    padding: 10px 16px;
-    background-color: rgba(0,0,0,0);
-    border: none;
-    color: #000;
-    font-weight: 500;
-    width: 100%;
-}
-input#search::placeholder {
-    color: #aaa;
-}
+
 input#submitBtn {
     width: 48px;
     height: 48px;
@@ -48,10 +40,7 @@ section {
     padding: 7.2rem 0;
 }
 .search-bar {
-    background-color: white;
-    display: flex;
-    border-radius: 24px;
-    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
+
 }
 #img-container img, .img-container img{
     width: 100%;
@@ -64,15 +53,33 @@ section {
     margin: 0;;
 }
 #search-form input[type=text] {
-    color: red;
-    background: transparent;
-    font-size: 5rem;
-    font-weight: 600;
-    margin: 24px;
-    display: inline;
-    border-bottom: 5px blue solid;
-    text-align: center;
-    width: auto;
+    color: white;
+    background: black;
+    font-size: 16rem;
+    font-weight: 700;
+    padding: 0; 
+    margin: 0;
+    line-height: 1.2;
+}
+input#search:focus {
+    border: none;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#search-form input[type=text]::placeholder, input#search::placeholder {
+    color:#ffffff;
+    opacity: 1;
+    transition: all 600ms ease-in-out;
+}
+input#search:hover::placeholder, input#search:focus::placeholder {
+    color: #444;
+    opacity: 1;
+    transition: all 600ms ease-in-out;
 }
 button {
     padding: 0;
@@ -178,13 +185,32 @@ section.hidden {
     color: white;
     font-size: 2.4rem;
 }
+.section-detail .details.small {
+    font-size: 1.7rem;
+}
 .section-detail .overline-details, .section-detail .underline-details {
     display: flex;
     align-items: center;
     padding: 2.4rem 1.6rem;
 }
+.link-button {
+    padding: 12px 16px;
+    background-color: blue;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+}
 .section-detail .underline-details:first-of-type {
     margin-top: 0px;
+}
+.section-detail .information-card .underline-details:first-of-type {
+    padding-top:24px;
+}
+.section-detail .information-card .underline-details {
+    border: none;
+    padding: 0;
+    padding: 24px 0;
+    margin: 0px;
 }
 .status-indicator {
     padding: 6px 14px;
@@ -208,10 +234,10 @@ section.hidden {
 .icon {
     
 }
-.section-detail .information-card .article-link {
-        float: right;
-        position: absolute;
-        right: 24px;
+.section-detail .information-card .link-container {
+    float: right;
+    position: absolute;
+    right: 24px;
 }
 /* Loader */
 .slider{

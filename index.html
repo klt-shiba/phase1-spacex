@@ -24,37 +24,36 @@
         <div class="subline dec"></div>
       </div>
       <h1>SpaceX</h1>
-      <!-- <form id="search-form">
-        <Label>I want to see more photos of</label>
-        <input type="text" placeholder="James" id="search-photos">
-        <input type="submit" id="submitBtn"> 
-      </form> -->
-      <!-- <nav></nav>
+      <nav></nav>
       <div class="search">
         <div class="search-bar">
-          <form id='search-form' method="GET">
-            <input id='search' type='text' name='search' placeholder="Summoned skull">
+          <form id='search-form' action="https://api.spacexdata.com/v4/launches/query" method="POST">
+            <input id='search' type='text' name='query' placeholder="SpaceX">
             <input type='submit' name='submit' id='submitBtn' />
           </form>
         </div>
-      </div> -->
+      </div>
     </div>
   </header>
   <section id="launch-random" class="section-gallery section-wrapper">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4 v-alignment">
+        <div class="col-md-4">
           <div class="section-heading align-r">
             <h2>Recent Events</h2>
-            <p class="subheading">
-              Lorem ipsum content explaining some stuff
-            </p>
-            <button class="section-cta cta" id="show-more-events">
-              Show me more events
-            </button>
           </div>
         </div>
-        <div id="" class="col-md-8 align-l img-container"></div>
+        <div id="" class="col-md-8 align-l"> 
+          <p class="subheading">
+          Lorem ipsum content explaining some stuff
+        </p>
+        <button class="section-cta cta" id="show-more-events">
+          Show me more events
+        </button>
+      </div>
+      </div>
+      <div class="row">
+        <div class="img-container"
       </div>
     </div>
   </section>
@@ -69,6 +68,38 @@
           <button class="section-cta cta" id="show-more-events">
             Show me more events
           </button>
+        </div>
+      </div>
+      <div id="" class="img-container align-l">
+        <ul class="img-list">
+          <li class="img-list-item clone-list hidden">
+            <button class="img-buttons">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="img-tiles">
+                </div>
+                <div class="col-md-7 v-alignment left-column">
+                  <div class="heading-content">
+                    <h3 class="list-item-heading">Launch # <span class="dynamic-data"></span></h3>
+                    <p class="list-item-description short-form white"></p>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="search-results" class="section-list hidden section-wrapper">
+    <div class="container-fluid">
+      <div class="v-alignment">
+        <div class="section-heading align-r">
+          <h2>Search Results for: <span></span> </h2>
+          <p class="subheading">
+            Lorem ipsum content explaining some stuff
+          </p>
         </div>
       </div>
       <div id="" class="img-container align-l">
@@ -130,10 +161,10 @@
             <div class="information-card">
               <h3>Related Media</h3>
               <div class="underline-details">
-                <i class="icon small rocket"></i><span class="details heading article-heading">Article:</span> </span><span class="details article-link"><a class=link-button>Learn More</a></span>
+                <i class="icon small rocket"></i><span class="details small heading article-heading">Article:</span> </span><span class="details small article-link link-container"><a class=link-button>Learn More</a></span>
               </div>
               <div class="underline-details">
-                <i class="icon small rocket"></i><span class="details heading presskit-heading">Presskit:</span> </span><span class="details presskit-link"><a class=link-button>View and Download</a></span>
+                <i class="icon small rocket"></i><span class="details small heading presskit-heading">Presskit:</span> </span><span class="details small presskit-link link-container"><a class=link-button>View and Download</a></span>
               </div>
             </div>
 
