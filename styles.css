@@ -250,10 +250,72 @@ section.hidden {
 .icon {
     
 }
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+input[type=radio] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: #e7e7e7;
+    border-color: #ddd;
+}
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+input[type=radio]:checked + label { 
+   background-image: none;
+    background-color:black;
+}
+
 .section-detail .information-card .link-container {
     float: right;
     position: absolute;
     right: 24px;
+}
+input[type=radio] {
+    display:none;
+}
+input[type=radio] + label {
+    display:inline-block;
+    margin:-3px;
+    padding: 16px 20px;
+    margin-bottom: 0;
+    font-size: 1.7rem;
+    line-height: 1.8rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid green;
+}
+input[type=radio]:hover + label {
+    background-color: lightseagreen;
+} 
+input[type=radio]:checked + label {
+       background-image: none;
+        outline: 0;
+        background-color:green;
+}
+.radio-selectors {
+    display: inline-block;
+    float: right;
+}
+.section-headings {
+    justify-content: space-between
 }
 /* Loader */
 .slider{
