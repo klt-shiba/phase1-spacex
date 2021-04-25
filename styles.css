@@ -247,6 +247,9 @@ section.hidden {
     border-bottom: 1px solid white;
     margin: 3.2rem 0;
 }
+.float-right {
+    margin-left: auto;
+}
 .icon {
     
 }

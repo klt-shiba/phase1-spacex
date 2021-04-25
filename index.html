@@ -35,7 +35,7 @@
       </div>
     </div>
   </header>
-  <section id="launch-random" class="section-gallery section-wrapper">
+  <section id="launch-random" class="section-gallery hidden section-wrapper">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
@@ -57,7 +57,7 @@
       </div>
     </div>
   </section>
-  <section id="launch-list" class="section-list hidden section-wrapper">
+  <section id="launch-list" class="section-list section-wrapper">
     <div class="container-fluid">
       <div class="v-alignment">
         <div class="container-fluid section-heading">
@@ -74,28 +74,28 @@
               </div>
             </div>
           </div>
-        
-        <div id="" class="img-container align-l">
-          <ul class="img-list">
-            <li class="img-list-item clone-list hidden">
-              <button class="img-buttons">
-                <div class="row">
-                  <div class="col-md-5">
-                    <img class="img-tiles">
-                  </div>
-                  <div class="col-md-7 v-alignment left-column">
-                    <div class="heading-content">
-                      <h3 class="list-item-heading">Launch # <span class="dynamic-data"></span></h3>
-                      <p class="list-item-description short-form white"></p>
+
+          <div id="" class="img-container align-l">
+            <ul class="img-list">
+              <li class="img-list-item clone-list hidden">
+                <button class="img-buttons">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <img class="img-tiles">
+                    </div>
+                    <div class="col-md-7 v-alignment left-column">
+                      <div class="heading-content">
+                        <h3 class="list-item-heading">Launch # <span class="dynamic-data"></span></h3>
+                        <p class="list-item-description short-form white"></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </button>
-            </li>
-          </ul>
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
   </section>
   <section id="search-results" class="section-list hidden section-wrapper">
     <div class="container-fluid">
@@ -154,8 +154,8 @@
         <div class="col-md-5">
           <div class="section-heading align-l">
             <div class="underline-details">
-              <span class="status-indicator success number float-right">Flight number</span>
-              <span class="status-indicator success float-right">Success</spans>
+              <span class="status-indicator success number ">Flight number</span>
+              <span class="status-indicator success launch-success">Success</spans>
             </div>
             <h2>Who's who</h2>
             <div class="underline-details">
@@ -166,6 +166,38 @@
               Lorem ipsum content explaining some stuff
             </p>
             <div class="information-card">
+              <div class="payload-type">
+                <h3>Payload</h3>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span
+                    class="details small heading payload-type-heading">Capsule</span>
+                  </span><span class="details small capsule-type float-right"></span>
+                </div>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span class="details small heading payload-type-heading">Type</span>
+                  </span><span class="details small payload-type float-right"></span>
+                </div>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span class="details small heading payload-type-heading">Weight
+                    (kg)</span>
+                  </span><span class="details small weight-type float-right"></span>
+                </div>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span
+                    class="details small heading presskit-heading">Customer/s</span>
+                  </span><span class="details small float-right customer-type"></span>
+                </div>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span
+                    class="details small heading presskit-heading">Manufacturer/s</span>
+                  </span><span class="details small float-right manufacturer-type"></span>
+                </div>
+                <div class="underline-details">
+                  <i class="icon small rocket"></i><span
+                    class="details small heading presskit-heading">Nationality/s</span>
+                  </span><span class="details small float-right nationality-type"></span>
+                </div>
+              </div>
               <h3>Related Media</h3>
               <div class="underline-details">
                 <i class="icon small rocket"></i><span class="details small heading article-heading">Article:</span>
@@ -178,7 +210,6 @@
                     Download</a></span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
