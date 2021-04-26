@@ -250,8 +250,73 @@ section.hidden {
 .float-right {
     margin-left: auto;
 }
+
+.information-card dl, .information-card ol, .information-card ul {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.information-card ol, .information-card ul {
+    padding-left: 0rem;
+}
+.accordion-block {
+    width: 100%;
+    margin: 0;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    transition: 0.4s;
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    padding: 1.4rem;
+}
+.accordion-block.active, .accordion-block:hover {
+    background-color: white;
+    color: black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.payload-list-items {
+    border: 2px solid white;
+    border-radius: 8px;
+}
+.accordion-panel {
+    padding: 0 1.6rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  .accordion-block:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 1.7rem;
+    color: white;
+    float: right;
+    margin-left: 5px;
+  }
+  .accordion-block.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    color: black;
+  }
+  .payload-list-wrapper li {
+    margin: 0.8rem 0;
+  }
+  .payload-list-wrapper li:first-of-type {
+    margin: 1.6rem 0;
+  }
+  
 .icon {
     
+}
+.information-card .sub-section-container {
+    margin-bottom: 4.0rem;
+}
+.payload-list-items::marker  {
+    content: "";
 }
 /*
   Hide radio button (the round disc)

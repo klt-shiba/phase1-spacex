@@ -1,15 +1,12 @@
 window.addEventListener("DOMContentLoaded", (event) => {
   let searchField = document.getElementById("search");
   let submitBtn = document.getElementById("submitBtn");
-  let userList = document.getElementById("img-container");
-  let sectionCrew = document.getElementById("space-crew");
   let sectionCta = document.querySelectorAll(".section-cta");
   let listTemplate = document.querySelector(".clone-list");
   let launchListSection = document.getElementById("launch-list");
   let sections = document.querySelectorAll("section");
   let detailsPage = document.getElementById("details-page");
   const resultsPage = document.getElementById("search-results");
-  // Set radio to X Value
   const radioGroup = document.getElementById("radio-filters");
   const radioButtonArray = radioGroup.querySelectorAll("input");
   let setChecked = (radioButtonArray[0].checked = true);
@@ -53,26 +50,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
   });
 
+  let accordionInteraction = (button) => {
+    button.addEventListener("click", function (e) {
+      console.log("working");
+      this.classList.toggle("active");
+      let panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  };
   // Fetch Payload of ID
   let fetchPayload = (uid) => {
     // Empty array
-    let arrayOfPayloads = [];
-    // Loop through each unique ID and add to array
-    for (let id of uid) {
-      fetch(`https://api.spacexdata.com/v4/payloads/${id}`)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (object) {
-          let payLoads = object;
-          arrayOfPayloads.push(payLoads);
-          console.log(arrayOfPayloads);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    return arrayOfPayloads;
+    return fetch(`https://api.spacexdata.com/v4/payloads/${uid}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (object) {
+        let payLoads = object;
+        return payLoads;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   let fetchLaunchSite = (uid) => {
     return fetch(`https://api.spacexdata.com/v4/payloads/${uid}`)
@@ -346,14 +349,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const informationCard = detailsPage.querySelector(".information-card");
     const articleLink = informationCard.querySelector(".article-link a");
     const pressKitLInk = informationCard.querySelector(".presskit-link a");
-    const payLoadType = informationCard.querySelector(".payload-type");
-    const customerType = informationCard.querySelector(".customer-type");
-    const manufacturerType = informationCard.querySelector(
-      ".manufacturer-type"
+    const payloadListTemplate = informationCard.querySelector(
+      ".payload-list-items"
     );
-    const nationalityType = informationCard.querySelector(".nationality-type");
-    const weightType = informationCard.querySelector(".weight-type");
-    const capsuleType = informationCard.querySelector(".capsule-type");
 
     // Check if launch was successful or failure and apply correct styling
     if (info.success === true) {
@@ -389,27 +387,41 @@ window.addEventListener("DOMContentLoaded", (event) => {
       img.src = photo;
       imgList.append(img);
     }
-    // Load Payload Object
+    // Load payload object
     async function loadPayload() {
-      //Payload Object
-      let payLoadObject = await fetchPayload(payload);
-
-      console.log(payLoadObject[1]);
-
-      for (let el of payLoadObject) {
-        console.log(el);
+      const payloadListContainer = informationCard.querySelector(
+        ".payload-list-wrapper"
+      );
+      // Loop through each payload ID in Payload object
+      for (let item of payload) {
+        // Store object value of promise
+        let el = await fetchPayload(item);
+        let listClone = payloadListTemplate.cloneNode(true);
+        let payLoadType = listClone.querySelector(".payload-type");
+        let customerType = listClone.querySelector(".customer-type");
+        let manufacturerType = listClone.querySelector(".manufacturer-type");
+        let nationalityType = listClone.querySelector(".nationality-type");
+        let weightType = listClone.querySelector(".weight-type");
+        let capsuleNumber = listClone.querySelector(".capsule-number");
+        let button = listClone.querySelector("button");
+        // Add new payload list item
+        payloadListContainer.append(listClone);
+        listClone.classList.remove("hidden");
         // Populate payload details
-        capsuleType.innerHTML = el.capsule;
+        console.log(el);
+        capsuleNumber.innerHTML = payload.indexOf(item) + 1;
         payLoadType.innerHTML = el.type;
         customerType.innerHTML = el.customers;
         manufacturerType.innerHTML = el.manufacturers;
         nationalityType.innerHTML = el.nationalities;
         weightType.innerHTML = el.mass_kg + "kg";
+
+        accordionInteraction(button);
       }
     }
     loadPayload();
+    //load accordion interaction
   };
-
   loadLaunchList(setChecked);
   onSelectRenderArray();
   clearPage();
