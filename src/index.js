@@ -1,54 +1,65 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  let searchField = document.getElementById("search");
-  let submitBtn = document.getElementById("submitBtn");
-  let sectionCta = document.querySelectorAll(".section-cta");
-  let listTemplate = document.querySelector(".clone-list");
-  let launchListSection = document.getElementById("launch-list");
-  let sections = document.querySelectorAll("section");
-  let detailsPage = document.getElementById("details-page");
+  const searchField = document.getElementById("search");
+  const submitBtn = document.getElementById("submitBtn");
+  const sectionCta = document.querySelectorAll(".section-cta");
+  const listTemplate = document.querySelector(".clone-list");
+  const launchListSection = document.getElementById("launch-list");
+  const sections = document.querySelectorAll("section");
+  const detailsPage = document.getElementById("details-page");
   const resultsPage = document.getElementById("search-results");
   const radioGroup = document.getElementById("radio-filters");
   const radioButtonArray = radioGroup.querySelectorAll("input");
   let setChecked = (radioButtonArray[0].checked = true);
-
   searchField.value = "";
-  // Search bar
-  submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
 
-    let value = searchField.value.toLowerCase();
-    console.log(value);
-
-    let configurationObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        query: {
-          $text: {
-            $search: value,
-          },
+  let toggleSections = (s) => {
+    // s = the section id
+    for (let section of sections) {
+      console.log(section.id);
+      if (section.id === s) {
+        section.classList.remove("hidden");
+      } else {
+        section.classList.add("hidden");
+      }
+    }
+  };
+  let searchBar = () => {
+    // Search bar
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      let value = searchField.value.toLowerCase();
+      console.log(value);
+      let configurationObject = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      }),
-    };
-    console.log(configurationObject);
-    return fetch(
-      "https://api.spacexdata.com/v4/launches/query",
-      configurationObject
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (object) {
-        console.log(object);
-        renderSearch(object);
-      })
-      .catch(function (error) {
-        console.log("Not working", error);
-      });
-  });
+        body: JSON.stringify({
+          query: {
+            $text: {
+              $search: value,
+            },
+          },
+        }),
+      };
+      console.log(configurationObject);
+      return fetch(
+        "https://api.spacexdata.com/v4/launches/query",
+        configurationObject
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (object) {
+          console.log(object);
+          renderSearch(object);
+        })
+        .catch(function (error) {
+          console.log("Not working", error);
+        });
+    });
+  };
 
   let accordionInteraction = (button) => {
     button.addEventListener("click", function (e) {
@@ -98,9 +109,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // Check if there are launches
     imgList.innerHTML = "";
-
+    toggleSections(sectionContainer.id);
+    // If more than 1 result
     if (launches.length > 0) {
-      sectionContainer.classList.remove("hidden");
+      // sectionContainer.classList.remove("hidden");
 
       for (launch of launches) {
         let imgPath = shuffle(launch.links.flickr.original);
@@ -159,7 +171,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //       console.log("Not working", error);
   //     });
   // }
-
   let loadSection = (e) => {
     let btn = e.target;
     console.log(btn.id);
@@ -168,7 +179,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     } else {
     }
   };
-
   let clearPage = () => {
     for (let ctas of sectionCta) {
       ctas.addEventListener("click", (e) => {
@@ -420,8 +430,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }
     }
     loadPayload();
-    //load accordion interaction
   };
+  searchBar();
   loadLaunchList(setChecked);
   onSelectRenderArray();
   clearPage();
