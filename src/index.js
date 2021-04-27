@@ -68,7 +68,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     });
   };
-
   let accordionInteraction = (button) => {
     button.addEventListener("click", function (e) {
       console.log("working");
@@ -96,8 +95,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         console.log(error);
       });
   };
-  let fetchLaunchSite = (uid) => {
-    return fetch(`https://api.spacexdata.com/v4/payloads/${uid}`)
+  let fetchCrew = (uid) => {
+    return fetch(`https://api.spacexdata.com/v4/crew/${uid}`)
       .then(function (response) {
         return response.json();
       })
@@ -109,7 +108,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         console.log(error);
       });
   };
-
   let renderSearch = (array, string) => {
     let sectionContainer = document.getElementById("search-results");
     let imgList = sectionContainer.querySelector(".img-container");
@@ -134,61 +132,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       console.log("empty");
     }
   };
-  // let loadRandomLaunches = () => {
-
-  //   let url = `https://api.spacexdata.com/v4/launches/past`;
-  //   fetch(url)
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (object) {
-
-  //       let sectionContainer = document.getElementById('launch-random');
-  //       let imgList = sectionContainer.querySelector(".img-container")
-
-  //       console.log(imgList)
-
-  //       let launches = object.filter((el) => {
-  //         return el.static_fire_date_utc !== null;
-  //       });
-
-  //       let randomSix = shuffle(launches).slice(0, 6);
-  //       for (launch of randomSix) {
-  //         let imgPath = launch.links.flickr.original;
-  //         let button = document.createElement("button");
-  //         let img = document.createElement("img");
-  //         img.classList.add("img-tiles");
-  //         button.classList.add("img-buttons");
-  //         img.src = imgPath;
-  //         imgList.append(button);
-  //         button.append(img);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log("Not working", error);
-  //     });
-  // }
-  let loadSection = (e) => {
-    let btn = e.target;
-    console.log(btn.id);
-    if (btn.id === "show-more-events") {
-      launchListSection.classList.remove("hidden");
-    } else {
-    }
-  };
-  let clearPage = () => {
-    for (let ctas of sectionCta) {
-      ctas.addEventListener("click", (e) => {
-        console.log(e.target);
-        for (let section of sections) {
-          section.classList.add("hidden");
-        }
-        setTimeout(function () {
-          loadSection(e);
-        }, 3000);
-      });
-    }
-  };
   // Render List of Launches
   let loadLaunchList = (radioValue) => {
     let url = `https://api.spacexdata.com/v4/launches/past`;
@@ -204,44 +147,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         let launches = object.filter((el) => {
           return el.links.flickr.original.length !== 0;
         });
-        let sortArray = (a) => {
-          const launchObject = a;
-
-          // on page load order return array
-          let decideSortType = () => {
-            console.log(radioValue + "B");
-            if (radioValue === radioButtonArray[0].checked) {
-              let randomOrder = shuffle(launchObject).slice(0, 24);
-              return randomOrder.slice(0, 10);
-            } else if (radioValue === radioButtonArray[1].checked) {
-              let flightNumber = launchObject.sort(
-                (a, b) => a.flight_number - b.flight_number
-              );
-              return flightNumber.slice(0, 10);
-            } else if (radioValue === radioButtonArray[2].checked) {
-              console.log("3 is working");
-              let alphabeticalorder = launchObject.sort((a, b) => {
-                if (a.name < b.name) {
-                  return -1;
-                }
-                if (a.name > b.name) {
-                  return 1;
-                }
-                return 0;
-              });
-              return alphabeticalorder.slice(0, 10);
-            } else {
-              let randomOrder = shuffle(launchObject).slice(0, 24);
-              return randomOrder.slice(0, 10);
-            }
-          };
-          return decideSortType();
-          // console.log(decideSortType())
-        };
         // Shuffle launches so list is random each time
         let shuffleLaunches = shuffle(launches).slice(0, 24);
 
-        return renderList(sortArray(launches), imgList);
+        return renderList(sortArray(launches, radioValue), imgList);
       })
       .catch(function (error) {
         console.log("Not working", error);
@@ -256,15 +165,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
       button.addEventListener("click", function (e) {
         togglePendingState();
         if (radioButtonArray[0].checked) {
-          console.log("radioButtonArray[0].checked");
+          // console.log("radioButtonArray[0].checked");
           let a = radioButtonArray[0].checked;
           return loadLaunchList(a);
         } else if (radioButtonArray[1].checked) {
-          console.log("radioButtonArray[1].checked");
+          // console.log("radioButtonArray[1].checked");
           let b = radioButtonArray[1].checked;
           return loadLaunchList(b);
         } else if (radioButtonArray[2].checked) {
-          console.log("radioButtonArray[2].checked");
+          // console.log("radioButtonArray[2].checked");
           let c = radioButtonArray[2].checked;
           return loadLaunchList(c);
         } else {
@@ -302,8 +211,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         section.classList.add("hidden");
       }
     }
-
-    //Check if launch was successful or failure =
     const imgList = detailsPage.querySelector(".img-container");
     const heading = detailsPage.querySelector("h2");
     const summary = detailsPage.querySelector("p");
@@ -315,9 +222,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const informationCard = detailsPage.querySelector(".information-card");
     const articleLink = informationCard.querySelector(".article-link a");
     const pressKitLInk = informationCard.querySelector(".presskit-link a");
-    const payloadListTemplate = informationCard.querySelector(
-      ".payload-list-items"
-    );
+    const youtubeLink = informationCard.querySelector(".youtube-link a");
 
     // Check if launch was successful or failure and apply correct styling
     if (info.success === true) {
@@ -343,6 +248,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     // Populate Links
     articleLink.href = info.links.article;
     pressKitLInk.href = info.links.presskit;
+    youtubeLink.href = info.links.webcast;
 
     // Photos Array
     let photos = info.links.flickr.original;
@@ -353,39 +259,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
       img.src = photo;
       imgList.append(img);
     }
-    // Load payload object
-    async function loadPayload() {
-      const payloadListContainer = informationCard.querySelector(
-        ".payload-list-wrapper"
-      );
-      // Loop through each payload ID in Payload object
-      for (let item of payload) {
-        // Store object value of promise
-        let el = await fetchPayload(item);
-        let listClone = payloadListTemplate.cloneNode(true);
-        let payLoadType = listClone.querySelector(".payload-type");
-        let customerType = listClone.querySelector(".customer-type");
-        let manufacturerType = listClone.querySelector(".manufacturer-type");
-        let nationalityType = listClone.querySelector(".nationality-type");
-        let weightType = listClone.querySelector(".weight-type");
-        let capsuleNumber = listClone.querySelector(".capsule-number");
-        let button = listClone.querySelector("button");
-        // Add new payload list item
-        payloadListContainer.append(listClone);
-        listClone.classList.remove("hidden");
-        // Populate payload details
-        console.log(el);
-        capsuleNumber.innerHTML = payload.indexOf(item) + 1;
-        payLoadType.innerHTML = el.type;
-        customerType.innerHTML = el.customers;
-        manufacturerType.innerHTML = el.manufacturers;
-        nationalityType.innerHTML = el.nationalities;
-        weightType.innerHTML = el.mass_kg + "kg";
 
-        accordionInteraction(button);
-      }
-    }
-    loadPayload();
+    // Create crew array
+    let crewArray = info.crew;
+    checkCrew(crewArray);
+    loadPayload(payload, informationCard);
   };
   // Render each list element with launch data
   let renderList = (array, imgContainer) => {
@@ -423,9 +301,88 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }
     }, 3000);
   };
+  let checkCrew = (object) => {
+    if (object.length > 0) {
+      console.log("has crew");
+    } else {
+      console.log("No crew");
+    }
+  };
+
+  // function to sort an array by certain criterias
+  let sortArray = (array, radioValue) => {
+    const launchObject = array;
+    // on page load order return array
+    let decideSortType = () => {
+      // If option 0 is selected randomize the order of the array
+      if (radioValue === radioButtonArray[0].checked) {
+        let randomOrder = shuffle(launchObject).slice(0, 24);
+        return randomOrder.slice(0, 10);
+      } else if (radioValue === radioButtonArray[1].checked) {
+        let flightNumber = launchObject.sort((a, b) => {
+          if (a.flight_number > b.flight_number) {
+            return -1;
+          }
+          if (a.flight_number < b.flight_number) {
+            return 1;
+          }
+          return 0;
+        });
+        return flightNumber.slice(0, 10);
+      } else if (radioValue === radioButtonArray[2].checked) {
+        console.log("3 is working");
+        let alphabeticalorder = launchObject.sort((a, b) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+        return alphabeticalorder.slice(0, 10);
+      } else {
+        let randomOrder = shuffle(launchObject).slice(0, 24);
+        return randomOrder.slice(0, 10);
+      }
+    };
+    return decideSortType();
+    // console.log(decideSortType())
+  };
+  // Load payload object
+  async function loadPayload(array, container) {
+    const payloadListTemplate = container.querySelector(".payload-list-items");
+    const payloadListContainer = container.querySelector(
+      ".payload-list-wrapper"
+    );
+    // Loop through each payload ID in Payload object
+    for (let item of array) {
+      // Store object value of promise
+      let el = await fetchPayload(item);
+      let listClone = payloadListTemplate.cloneNode(true);
+      let payLoadType = listClone.querySelector(".payload-type");
+      let customerType = listClone.querySelector(".customer-type");
+      let manufacturerType = listClone.querySelector(".manufacturer-type");
+      let nationalityType = listClone.querySelector(".nationality-type");
+      let weightType = listClone.querySelector(".weight-type");
+      let capsuleNumber = listClone.querySelector(".capsule-number");
+      let button = listClone.querySelector("button");
+      // Add new payload list item
+      payloadListContainer.append(listClone);
+      listClone.classList.remove("hidden");
+      // Populate payload details
+      console.log(el);
+      capsuleNumber.innerHTML = array.indexOf(item) + 1;
+      payLoadType.innerHTML = el.type;
+      customerType.innerHTML = el.customers;
+      manufacturerType.innerHTML = el.manufacturers;
+      nationalityType.innerHTML = el.nationalities;
+      weightType.innerHTML = el.mass_kg + "kg";
+
+      accordionInteraction(button);
+    }
+  }
   searchBar();
   loadLaunchList(setChecked);
   onSelectRenderArray();
-  clearPage();
-  // loadSection();
 });
