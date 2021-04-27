@@ -12,8 +12,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let setChecked = (radioButtonArray[0].checked = true);
   searchField.value = "";
 
+  let shuffle = (a) => {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
   let toggleSections = (s) => {
     // s = the section id
+    togglePendingState();
     for (let section of sections) {
       console.log(section.id);
       if (section.id === s) {
@@ -53,7 +61,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         })
         .then(function (object) {
           console.log(object);
-          renderSearch(object);
+          renderSearch(object, value);
         })
         .catch(function (error) {
           console.log("Not working", error);
@@ -102,37 +110,26 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
   };
 
-  let renderSearch = (object) => {
+  let renderSearch = (array, string) => {
     let sectionContainer = document.getElementById("search-results");
     let imgList = sectionContainer.querySelector(".img-container");
-    let launches = object.docs;
+    let launches = array.docs;
+    let searchPlayback = document.querySelector(".search-result-playback");
 
-    // Check if there are launches
+    // Clear launches
     imgList.innerHTML = "";
+    searchField.blur();
+    searchField.value = "";
+
+    // Show relevant section
     toggleSections(sectionContainer.id);
+
+    // Playback users search in the results heading
+    searchPlayback.innerHTML = string;
+    console.log(searchPlayback);
     // If more than 1 result
     if (launches.length > 0) {
-      // sectionContainer.classList.remove("hidden");
-
-      for (launch of launches) {
-        let imgPath = shuffle(launch.links.flickr.original);
-        let cloneList = listTemplate.cloneNode(true);
-        cloneList.classList.remove("hidden");
-        imgList.append(cloneList);
-        let img = cloneList.querySelector(".img-tiles");
-        let heading = cloneList.querySelector(".list-item-heading");
-        let body = cloneList.querySelector(".list-item-description");
-        let button = cloneList.querySelector("button");
-        img.src = imgPath;
-        heading.innerText = `${launch.name}`;
-        let launchDetails = launch;
-
-        button.addEventListener("click", function (e) {
-          console.log(launchDetails);
-          togglePendingState();
-          renderInfoPage(launchDetails);
-        });
-      }
+      renderList(launches, imgList);
     } else {
       console.log("empty");
     }
@@ -207,13 +204,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         let launches = object.filter((el) => {
           return el.links.flickr.original.length !== 0;
         });
-        function shuffle(a) {
-          for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-          }
-          return a;
-        }
         let sortArray = (a) => {
           const launchObject = a;
 
@@ -251,41 +241,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // Shuffle launches so list is random each time
         let shuffleLaunches = shuffle(launches).slice(0, 24);
 
-        // Render each list element with launch data
-        let renderList = (array) => {
-          setTimeout(function () {
-            for (launch of array) {
-              let imgPath = shuffle(launch.links.flickr.original);
-              let cloneList = listTemplate.cloneNode(true);
-              cloneList.classList.remove("hidden");
-              imgList.append(cloneList);
-              let img = cloneList.querySelector(".img-tiles");
-              let heading = cloneList.querySelector(".list-item-heading");
-              let button = cloneList.querySelector("button");
-
-              if (launch.success === true) {
-                button.classList.add("success");
-              } else {
-                button.classList.add("failure");
-              }
-
-              // Add image source and Heading
-              img.src = imgPath;
-              heading.innerText = `${launch.name}`;
-              let launchDetails = launch;
-              let payloadDetails = launch.payloads;
-              console.log(payloadDetails);
-
-              // Add on click event for list to each launch
-              button.addEventListener("click", function (e) {
-                console.log(launchDetails);
-                togglePendingState();
-                renderInfoPage(launchDetails, payloadDetails);
-              });
-            }
-          }, 3000);
-        };
-        return renderList(sortArray(launches));
+        return renderList(sortArray(launches), imgList);
       })
       .catch(function (error) {
         console.log("Not working", error);
@@ -431,9 +387,45 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     loadPayload();
   };
+  // Render each list element with launch data
+  let renderList = (array, imgContainer) => {
+    setTimeout(function () {
+      // iterate over the array of launches
+      for (launch of array) {
+        let imgPath = shuffle(launch.links.flickr.original);
+        let cloneList = listTemplate.cloneNode(true);
+        cloneList.classList.remove("hidden");
+        imgContainer.append(cloneList);
+        let img = cloneList.querySelector(".img-tiles");
+        let heading = cloneList.querySelector(".list-item-heading");
+        let button = cloneList.querySelector("button");
+
+        // Add correct hover effect for status of launch
+        if (launch.success === true) {
+          button.classList.add("success");
+        } else {
+          button.classList.add("failure");
+        }
+
+        // Add image source and Heading
+        img.src = imgPath;
+        heading.innerText = `${launch.name}`;
+        let launchDetails = launch;
+        let payloadDetails = launch.payloads;
+        console.log(payloadDetails);
+
+        // Add on click event for list to each launch
+        button.addEventListener("click", function (e) {
+          console.log(launchDetails);
+          togglePendingState();
+          renderInfoPage(launchDetails, payloadDetails);
+        });
+      }
+    }, 3000);
+  };
   searchBar();
   loadLaunchList(setChecked);
   onSelectRenderArray();
   clearPage();
-  loadSection();
+  // loadSection();
 });
