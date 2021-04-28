@@ -35,6 +35,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     // Search bar
     submitBtn.addEventListener("click", function (e) {
       e.preventDefault();
+
       let value = searchField.value.toLowerCase();
       console.log(value);
       let configurationObject = {
@@ -197,7 +198,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }, 3000);
   };
   // Render information page
-  let renderInfoPage = (info, payload) => {
+  let renderInfoPage = (info, payload, crew) => {
     // Clear search bar
     searchField.value = "";
 
@@ -264,6 +265,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     let crewArray = info.crew;
     checkCrew(crewArray);
     loadPayload(payload, informationCard);
+    loadCrew(crewArray, informationCard);
   };
   // Render each list element with launch data
   let renderList = (array, imgContainer) => {
@@ -308,7 +310,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       console.log("No crew");
     }
   };
-
   // function to sort an array by certain criterias
   let sortArray = (array, radioValue) => {
     const launchObject = array;
@@ -380,6 +381,41 @@ window.addEventListener("DOMContentLoaded", (event) => {
       weightType.innerHTML = el.mass_kg + "kg";
 
       accordionInteraction(button);
+    }
+  }
+
+  // Load payload object
+  async function loadCrew(array, container) {
+    const payloadListTemplate = container.querySelector(".crew-list-wrapper");
+    const sectionContainer = container.querySelector(".crew-list-wrapper");
+
+    for (let item of array) {
+      // Store object value of promise
+      let el = await fetchCrew(item);
+      console.log(el);
+      let crewMember = new Crew(el.name, el.status, el.agency, el.image);
+      crewMember.renderCrew(sectionContainer);
+    }
+  }
+
+  class Crew {
+    constructor(name, status, agency, image) {
+      this.name = name;
+      this.status = status;
+      this.agency = agency;
+      this.image = image;
+    }
+    renderCrew(container) {
+      let img = document.createElement("img");
+      let list = document.createElement("li");
+      let nameLabel = document.createElement("div");
+
+      img.src = this.image;
+      container.append(list);
+      list.append(img);
+      list.append(nameLabel);
+
+      nameLabel.innerHTML = this.name;
     }
   }
   searchBar();
