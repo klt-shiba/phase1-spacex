@@ -29,6 +29,10 @@ div.search {
 input {
     border: none;
 }
+.crew-photos {
+    width: 4.8rem;
+    height: 4.8rem;
+}
 
 button#submitBtn {
     width: 308px;

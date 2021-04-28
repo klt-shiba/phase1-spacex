@@ -198,7 +198,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }, 3000);
   };
   // Render information page
-  let renderInfoPage = (info, payload, crew) => {
+  let renderInfoPage = (info, payload) => {
     // Clear search bar
     searchField.value = "";
 
@@ -383,8 +383,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       accordionInteraction(button);
     }
   }
-
-  // Load payload object
+  // Load crewObject
   async function loadCrew(array, container) {
     const payloadListTemplate = container.querySelector(".crew-list-wrapper");
     const sectionContainer = container.querySelector(".crew-list-wrapper");
@@ -411,11 +410,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let nameLabel = document.createElement("div");
 
       img.src = this.image;
+      img.classList.add("crew-photos");
+      nameLabel.innerHTML = this.name;
+
       container.append(list);
       list.append(img);
       list.append(nameLabel);
-
-      nameLabel.innerHTML = this.name;
     }
   }
   searchBar();
