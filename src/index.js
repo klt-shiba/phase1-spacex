@@ -397,6 +397,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
+  // Create crew objects and methods
   class Crew {
     constructor(name, status, agency, image) {
       this.name = name;
@@ -405,17 +406,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
       this.image = image;
     }
     renderCrew(container) {
-      let img = document.createElement("img");
-      let list = document.createElement("li");
-      let nameLabel = document.createElement("div");
+      // Show crew container
+      container.classList.remove("hidden");
+      let listItem = container.querySelector(".clone-item");
+      let cloneItem = listItem.cloneNode(true);
+      let img = cloneItem.querySelector("img");
+      let nameLabel = cloneItem.querySelector(".crew-name");
+      let crewAgency = cloneItem.querySelector(".crew-agency");
 
+      cloneItem.classList.remove("hidden");
       img.src = this.image;
-      img.classList.add("crew-photos");
+      crewAgency.innerHTML = this.agency;
       nameLabel.innerHTML = this.name;
-
-      container.append(list);
-      list.append(img);
-      list.append(nameLabel);
+      container.append(cloneItem);
     }
   }
   searchBar();
