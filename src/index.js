@@ -258,7 +258,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       img.src = photo;
       imgList.append(img);
     }
-
     // Create crew array
     let crewArray = info.crew;
     checkCrew(crewArray);
@@ -383,13 +382,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
   // Load crewObject
   async function loadCrew(array, container) {
-    const payloadListTemplate = container.querySelector(".crew-list-wrapper");
     const sectionContainer = container.querySelector(".crew-list-wrapper");
 
     for (let item of array) {
       // Store object value of promise
       let el = await fetchCrew(item);
-      console.log(el);
       let crewMember = new Crew(el.name, el.status, el.agency, el.image);
       crewMember.renderCrew(sectionContainer);
     }
@@ -417,6 +414,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
       crewAgency.innerHTML = this.agency;
       nameLabel.innerHTML = this.name;
       container.append(cloneItem);
+    }
+  }
+
+  // To do add payload items
+  class Payload {
+    constructor(type, customer, nationalities, mass_kg, manufacturers) {
+      this.type = type;
+      this.customer = customer;
+      this.nationalities = nationalities;
+      this.mass_kg = mass_kg;
+      this.manufacturers = manufacturers;
+    }
+    renderPayload(container) {
+      let listClone = payloadListTemplate.cloneNode(true);
+      let payLoadType = listClone.querySelector(".payload-type");
+      let customerType = listClone.querySelector(".customer-type");
+      let manufacturerType = listClone.querySelector(".manufacturer-type");
+      let nationalityType = listClone.querySelector(".nationality-type");
+      let weightType = listClone.querySelector(".weight-type");
+      let capsuleNumber = listClone.querySelector(".capsule-number");
+      let button = listClone.querySelector("button");
     }
   }
   searchBar();
