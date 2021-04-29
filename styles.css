@@ -1,613 +1,657 @@
 body {
-    width: auto;
-    height: 100vh;
-    background-color: black;
+  width: auto;
+  height: 100vh;
+  background-color: black;
 }
 /* Typography Specific */
-h1, h2, h3, h4, h5, h6, label {
-    font-weight: 700;
-    color: white;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  font-weight: 700;
+  color: white;
 }
 #search-form {
-    display: flex;
+  display: flex;
 }
 
 #header h1 {
-    font-size: 16rem;
+  font-size: 16rem;
 }
-#header h2, section h2, #header label{
-    font-size: 5rem;
-    color: #ddd;
+#header h2,
+section h2,
+#header label {
+  font-size: 5rem;
+  color: #ddd;
 }
 div.search {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: black;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
 }
 input {
-    border: none;
+  border: none;
 }
 .crew-photos {
-    width: 4.8rem;
-    height: 4.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
 }
 
 button#submitBtn {
-    width: 308px;
-    height: 308px;
-    border-radius: 0px;
-    border: 0;
-    background-color: #111;
-    font-size: 4.8rem;
-    transition: all 0.5s ease-in-out;
+  width: 308px;
+  height: 308px;
+  border-radius: 0px;
+  border: 0;
+  background-color: #111;
+  font-size: 4.8rem;
+  transition: all 0.5s ease-in-out;
 }
 button#submitBtn:hover {
-    background-color: black;
-    transition: all 0.5s ease-in-out;
-} 
+  background-color: black;
+  transition: all 0.5s ease-in-out;
+}
 #img-container {
-    padding: 16px;
+  padding: 16px;
 }
 section {
-    padding: 7.2rem 0;
+  padding: 7.2rem 0;
 }
 .search-bar {
-
 }
-#img-container img, .img-container img{
-    width: 100%;
-    height: auto;
+#img-container img,
+.img-container img {
+  width: 100%;
+  height: auto;
 }
-#img-container .img-tiles, .img-container .img-tiles {
-    height: 400px;
-    width: auto;
-    padding: 0;
-    margin: 0;;
+#img-container .img-tiles,
+.img-container .img-tiles {
+  height: 400px;
+  width: auto;
+  padding: 0;
+  margin: 0;
 }
-#search-form input[type=text] {
-    color: white;
-    background: black;
-    font-size: 16rem;
-    font-weight: 700;
-    padding: 0; 
-    margin: 0;
-    line-height: 1.2;
-    width: calc(100% - 308px);
+#search-form input[type="text"] {
+  color: white;
+  background: black;
+  font-size: 16rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+  width: calc(100% - 308px);
 }
 input#search:focus {
-    border: none;
+  border: none;
 }
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
-#search-form input[type=text]::placeholder, input#search::placeholder {
-    color:#ffffff;
-    opacity: 1;
-    transition: all 600ms ease-in-out;
+#search-form input[type="text"]::placeholder,
+input#search::placeholder {
+  color: #ffffff;
+  opacity: 1;
+  transition: all 600ms ease-in-out;
 }
-input#search:hover::placeholder, input#search:focus::placeholder {
-    color: #444;
-    opacity: 1;
-    transition: all 600ms ease-in-out;
+input#search:hover::placeholder,
+input#search:focus::placeholder {
+  color: #444;
+  opacity: 1;
+  transition: all 600ms ease-in-out;
 }
 button {
-    padding: 0;
-    border-radius: 24px;
-    margin: 12px;
-    border: none;
-    clip-path: none;
+  padding: 0;
+  border-radius: 24px;
+  margin: 12px;
+  border: none;
+  clip-path: none;
 }
 button.cta {
-    padding: 12px 20px;
-    border-radius: 0px;
-    background-color: blue;
-    color: white;
-    font-weight: 500;
-    font-size: 1.7rem;
-    margin: 0px;
-    border: 4px blue solid;
-    transition: background-color 500ms ease-in-out;
+  padding: 12px 20px;
+  border-radius: 0px;
+  background-color: blue;
+  color: white;
+  font-weight: 500;
+  font-size: 1.7rem;
+  margin: 0px;
+  border: 4px blue solid;
+  transition: background-color 500ms ease-in-out;
 }
 button.cta:hover {
-    background-color: transparent;
-    transition: background-color 500ms ease-in-out;
-
+  background-color: transparent;
+  transition: background-color 500ms ease-in-out;
 }
 .subheading {
-    font-size: 2.4rem;
-    color: white;
-    line-height: 4.4rem;
+  font-size: 2.4rem;
+  color: white;
+  line-height: 4.4rem;
 }
 .v-alignment {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 .h-alignment {
-    justify-content: center;
+  justify-content: center;
 }
 section .hidden {
-    display: none;;
+  display: none;
 }
 section.hidden {
-    display: none;;
+  display: none;
 }
 .align-l {
-    text-align: left;
+  text-align: left;
 }
 .align-r {
-    text-align: right;
+  text-align: right;
 }
 .section-list li .img-buttons {
-    width: 100%;
-    border-radius: 0px;
-    background-color: black;
-    text-align: left;
-    margin: 0px;
-    transition: all 0.5s ease-in-out;
+  width: 100%;
+  border-radius: 0px;
+  background-color: black;
+  text-align: left;
+  margin: 0px;
+  transition: all 0.5s ease-in-out;
 }
 .section-list li .img-buttons.success:hover {
-    background-color: green;
-    transition: all 0.5s ease-in-out;
+  background-color: green;
+  transition: all 0.5s ease-in-out;
 }
 .section-list li .img-buttons.failure:hover {
-    background-color: red;
-    transition: all 0.5s ease-in-out;
+  background-color: red;
+  transition: all 0.5s ease-in-out;
 }
 .section-list li .img-buttons img {
-    width: 100%;
-    height: 420px;
-    border-radius: 0px;
-    object-fit: cover;
+  width: 100%;
+  height: 420px;
+  border-radius: 0px;
+  object-fit: cover;
 }
 .section-list li .img-buttons .list-item-description {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 .section-list .img-buttons h3 {
-    font-size: 20rem;
+  font-size: 20rem;
 }
 .section-list .heading-content {
-    display: inline;
-    white-space: nowrap;
-    overflow: hidden;
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .section-list .left-column {
-    overflow: hidden;
-    max-height: 420px;;
+  overflow: hidden;
+  max-height: 420px;
 }
-.clone-list::marker, .section-detail .information-card .article-link::marker {
-    content: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+.clone-list::marker,
+.section-detail .information-card .article-link::marker {
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .white {
-    color:white;
+  color: white;
 }
 
-.section-detail h2{
-    font-size: 12rem;
-    word-wrap: anywhere;
-    line-height: 12.2rem;
+.section-detail h2 {
+  font-size: 12rem;
+  word-wrap: anywhere;
+  line-height: 12.2rem;
 }
 .section-detail h3 {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 .section-detail .information-card {
-    margin: 32px 0;
+  margin: 32px 0;
 }
 .section-detail .details {
-    color: white;
-    font-size: 1.7rem;
+  color: white;
+  font-size: 1.7rem;
 }
 .section-detail .details.small {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
-.section-detail .overline-details, .section-detail .underline-details {
-    display: flex;
-    align-items: center;
-    padding: 2.4rem 1.6rem;
+.section-detail .overline-details,
+.section-detail .underline-details {
+  display: flex;
+  align-items: center;
+  padding: 2.4rem 1.6rem;
 }
 .link-button {
-    padding: 12px 16px;
-    background-color: blue;
-    border-radius: 12px;
-    color: white;
-    text-decoration: none;
+  padding: 12px 16px;
+  background-color: blue;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
 }
 .section-detail .underline-details:first-of-type {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 .section-detail .information-card .underline-details:first-of-type {
-    padding-top:24px;
+  padding-top: 24px;
 }
 .section-detail .information-card .underline-details {
-    border: none;
-    padding: 0;
-    padding: 24px 0;
-    margin: 0px;
+  border: none;
+  padding: 0;
+  padding: 24px 0;
+  margin: 0px;
 }
 .status-indicator {
-    padding: 6px 14px;
-    color: white;
-    display: inline-block;
-    font-size: 1.4rem;
-    font-weight: 500;
-    float: right;
+  padding: 6px 14px;
+  color: white;
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  float: right;
 }
 .status-indicator.success {
-    background-color: green;
+  background-color: green;
 }
 .status-indicator.failure {
-    background-color: red;
+  background-color: red;
 }
-.status-indicator.info  {
-    background-color: blue;
+.status-indicator.info {
+  background-color: blue;
+}
+.status-indicator.launch-heading {
+  background-color: transparent;
+  outline: 2px solid blue;
+  outline-offset: -2px;
 }
 .status-indicator.flight-number {
-    background-color: transparent;
-    outline-offset: -2px;
+  background-color: transparent;
+  outline-offset: -2px;
 }
 
 .status-indicator.flight-number.success {
-    outline: 2px solid green;
+  outline: 2px solid green;
 }
 .status-indicator.flight-number.failure {
-    outline: 2px solid red;
+  outline: 2px solid red;
 }
 .section-detail .underline-details {
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    margin: 3.2rem 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  margin: 3.2rem 0;
 }
 .float-right {
-    margin-left: auto;
+  margin-left: auto;
 }
 
-.information-card dl, .information-card ol, .information-card ul {
-    margin-top: 0;
-    margin-bottom: 0rem;
+.information-card dl,
+.information-card ol,
+.information-card ul {
+  margin-top: 0;
+  margin-bottom: 0rem;
 }
 
-.information-card ol, .information-card ul {
-    padding-left: 0rem;
+.information-card ol,
+.information-card ul {
+  padding-left: 0rem;
 }
 .accordion-block {
-    width: 100%;
-    margin: 0;
-    background-color: black;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    transition: 0.4s;
-    font-size: 1.7rem;
-    line-height: 2.2rem;
-    padding: 1.4rem;
+  width: 100%;
+  margin: 0;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  transition: 0.4s;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  padding: 1.4rem;
 }
-.accordion-block.active, .accordion-block:hover {
-    background-color: white;
-    color: black;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+.accordion-block.active,
+.accordion-block:hover {
+  background-color: white;
+  color: black;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .payload-list-items {
-    border: 2px solid white;
-    border-radius: 8px;
+  /* border: 2px solid white;
+  border-radius: 8px; */
 }
 .accordion-panel {
-    padding: 0 1.6rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
-  .accordion-block:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 1.7rem;
-    color: white;
-    float: right;
-    margin-left: 5px;
-  }
-  .accordion-block.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-    color: black;
-  }
-  .payload-list-wrapper li {
-    margin: 0.8rem 0;
-  }
-  .payload-list-wrapper {
-    margin: 1.6rem 0 0 0;
-  }
-  
+  padding: 0 1.6rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+.accordion-block:after {
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  font-size: 1.7rem;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+.accordion-block.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  color: black;
+}
+.payload-list-wrapper li {
+  margin: 0.8rem 0;
+}
+.payload-list-wrapper {
+  margin: 1.6rem 0 0 0;
+}
+
 .icon {
-    
 }
 .img-wrapper {
-    width: 4.8rem;
-    height: 4.8rem;
-    overflow: hidden;
-    border-radius: 2.4rem;
-    margin-right: 0.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  overflow: hidden;
+  border-radius: 2.4rem;
+  margin-right: 0.8rem;
 }
 .img-wrapper img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .crew-list-wrapper li::marker {
-    content: "";
+  content: "";
 }
 .crew-list-wrapper .underline-details {
-    padding: 1.6rem 0;
+  padding: 1.6rem 0;
 }
 .information-card .sub-section-container {
-    margin-bottom: 4.0rem;
+  margin-bottom: 4rem;
 }
-.payload-list-items::marker  {
-    content: "";
+.payload-list-items::marker {
+  content: "";
 }
 .crew-name {
-    font-weight: 600;
+  font-weight: 600;
+}
+.list-button {
+  background-color: transparent;
+  text-align: left;
+  width: 100%;
 }
 /*
   Hide radio button (the round disc)
   we will use just the label to create pushbutton effect
 */
-input[type=radio] {
-    display:none; 
-    margin:10px;
+input[type="radio"] {
+  display: none;
+  margin: 10px;
 }
 
 /*
   Change the look'n'feel of labels (which are adjacent to radiobuttons).
   Add some margin, padding to label
 */
-input[type=radio] + label {
-    display:inline-block;
-    margin:-2px;
-    padding: 4px 12px;
-    background-color: #e7e7e7;
-    border-color: #ddd;
+input[type="radio"] + label {
+  display: inline-block;
+  margin: -2px;
+  padding: 4px 12px;
+  background-color: #e7e7e7;
+  border-color: #ddd;
 }
 /*
  Change background color for label next to checked radio button
  to make it look like highlighted button
 */
-input[type=radio]:checked + label { 
-   background-image: none;
-    background-color:black;
+input[type="radio"]:checked + label {
+  background-image: none;
+  background-color: black;
 }
-input[type=radio] {
-    display:none;
+input[type="radio"] {
+  display: none;
 }
-input[type=radio] + label {
-    display:inline-block;
-    margin:-3px;
-    padding: 16px 20px;
-    margin-bottom: 0;
-    font-size: 1.7rem;
-    line-height: 1.8rem;
-    font-weight: 500;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid blue;
+input[type="radio"] + label {
+  display: inline-block;
+  margin: -3px;
+  padding: 16px 20px;
+  margin-bottom: 0;
+  font-size: 1.7rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid blue;
 }
-input[type=radio]:hover + label {
-    background-color: blue;
-} 
-input[type=radio]:checked + label {
-       background-image: none;
-        outline: 0;
-        background-color:blue;
+input[type="radio"]:hover + label {
+  background-color: blue;
+}
+input[type="radio"]:checked + label {
+  background-image: none;
+  outline: 0;
+  background-color: blue;
 }
 .radio-selectors {
-    display: inline-block;
-    float: right;
+  display: inline-block;
+  float: right;
 }
 .section-headings {
-    justify-content: space-between
+  justify-content: space-between;
 }
 /* Loader */
-.slider{
-  position:fixed;
-  width:100%;
-  height:8px;
+.slider {
+  position: fixed;
+  width: 100%;
+  height: 8px;
   overflow-x: hidden;
   z-index: 99;
 }
 .slider.large {
-    height: 16px;
+  height: 16px;
 }
 .slider.hidden {
-    display: none;
+  display: none;
 }
-.line{
-  position:absolute;
+.line {
+  position: absolute;
   opacity: 0.4;
-  background:#4a8df8;
-  width:150%;
+  background: #4a8df8;
+  width: 150%;
   height: 100%;
 }
 
-.subline{
-  position:absolute;
-  background:#4a8df8;
-  height: 100%; 
+.subline {
+  position: absolute;
+  background: #4a8df8;
+  height: 100%;
 }
-.inc{
+.inc {
   animation: increase 2s infinite;
 }
-.dec{
+.dec {
   animation: decrease 2s 0.5s infinite;
 }
 
 @keyframes increase {
-   from { left: -5%; width: 5%; }
-   to { left: 130%; width: 100%;}
+  from {
+    left: -5%;
+    width: 5%;
+  }
+  to {
+    left: 130%;
+    width: 100%;
+  }
 }
 @keyframes decrease {
-   from { left: -80%; width: 80%; }
-   to { left: 110%; width: 10%;}
+  from {
+    left: -80%;
+    width: 80%;
+  }
+  to {
+    left: 110%;
+    width: 10%;
+  }
 }
 
 @media only screen and (max-width: 960px) {
-    #search-form input[type=text] {
-        font-size: 4.0em;
-        width: 100%;
-    }
-    button#submitBtn {
-        display: none;
-    }
-    #header h1 {
-        font-size: 4.0rem;
-    }
-    #header h2, section h2, #header label {
-        font-size: 2rem;
-        display: block;
-    }
-    .radio-selectors {
-        display: block;
-        margin: 0.8rem 0;
-    }
-    #launch-list .section-headings.v-alignment {
-        display: block;
-    }
-    section {
-        padding: 3.2rem 0;
-    }
-    .section-list .img-buttons h3 {
-        font-size: 3.2rem;
-    }
-    .section-list li .img-buttons img {
-        height: 320px;
-    }
-    input[type=radio] + label {
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-        padding: 0.8rem 2.0rem;
-        width: 100%;
-        margin: -1px 0;
-    }
-    .section-list .heading-content {
-        display: inline;
-        white-space:normal;
-        overflow: hidden;
-    }
-    .section-detail h2 {
-        font-size: 2rem;
-        word-wrap: anywhere;
-        line-height: 2.4rem;
-    }
-    .section-detail .underline-details {
-        margin: 1.6rem 0;
-    }
-    .section-detail .overline-details, .section-detail .underline-details {
-        padding: 1.6rem 0;
-    }
-    .section-detail .details {
-        font-size: 1.5rem
-    }
-    .subheading {
-        font-size: 1.5rem;
-        color: #eee;
-        line-height: 2.4rem;
-    }
-    .accordion-block {
-        padding: 0.8rem;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-    }
-    .section-detail h3 {
-        font-size: 2.4rem;
-    }
-    #header h2, section h2, #header label {
-        color: white;
-    }
-    .accordion-panel {
-        padding: 0 0.8rem;
-    }
-    .section-detail .details.small {
-        font-size: 1.4rem;
-    }
-    .section-detail .information-card .underline-details {
-        padding: 0.8rem 0;
-    }
-    .section-detail .information-card .underline-details:first-of-type {
-        padding-top: 1.7rem;
-    }
-    .section-detail .information-card .underline-details:last-of-type {
-        padding-bottom: 1.7rem;
-    }
-    .link-button {
-        padding: 0.4rem 0.8rem;
-        background-color: blue;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        right: 24px;
-    }
-    #details-page .row {
-        flex-direction: column-reverse;
-    }
+  #search-form input[type="text"] {
+    font-size: 4em;
+    width: 100%;
   }
-  @media only screen and (min-width: 961px) and (max-width: 1280px) {
-    #search-form input[type=text] {
-        font-size: 10rem;
-        width: calc(100% - 192px);
-    }
-    button#submitBtn {
-        width: 192px;
-        height: 192px;  
-    }
-    #header h1 {
-        font-size: 10rem;
-    }
-    section {
-        padding: 4.8rem 0;
-    }
-    #header h2, section h2, #header label {
-        display: block;
-    }
-    #launch-list .section-headings.v-alignment {
-        display: block;
-        text-align: left;
-        margin-bottom: 4.8rem;
-    }
-    .radio-selectors {
-        display: block;
-        float: none;
-    }
-    .section-list .img-buttons h3 {
-        font-size: 8rem;
-    }
-    .section-list li .img-buttons img {
-        height: 240px;
-    }
-    #details-page .row {
-        flex-direction: column-reverse;
-    }
-    .col-md-5, .col-md-7 {
-        width: 100%;
-    }
-    .section-detail h2 {
+  button#submitBtn {
+    display: none;
+  }
+  #header h1 {
+    font-size: 4rem;
+  }
+  #header h2,
+  section h2,
+  #header label {
+    font-size: 2rem;
+    display: block;
+  }
+  .radio-selectors {
+    display: block;
+    margin: 0.8rem 0;
+  }
+  #launch-list .section-headings.v-alignment {
+    display: block;
+  }
+  section {
+    padding: 3.2rem 0;
+  }
+  .section-list .img-buttons h3 {
+    font-size: 3.2rem;
+  }
+  .section-list li .img-buttons img {
+    height: 320px;
+  }
+  input[type="radio"] + label {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding: 0.8rem 2rem;
+    width: 100%;
+    margin: -1px 0;
+  }
+  .section-list .heading-content {
+    display: inline;
+    white-space: normal;
+    overflow: hidden;
+  }
+  .section-detail h2 {
+    font-size: 2rem;
+    word-wrap: anywhere;
+    line-height: 2.4rem;
+  }
+  .section-detail .underline-details {
+    margin: 1.6rem 0;
+  }
+  .section-detail .overline-details,
+  .section-detail .underline-details {
+    padding: 1.6rem 0;
+  }
+  .section-detail .details {
+    font-size: 1.5rem;
+  }
+  .subheading {
+    font-size: 1.5rem;
+    color: #eee;
+    line-height: 2.4rem;
+  }
+  .accordion-block {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .section-detail h3 {
+    font-size: 2.4rem;
+  }
+  #header h2,
+  section h2,
+  #header label {
+    color: white;
+  }
+  .accordion-panel {
+    padding: 0 0.8rem;
+  }
+  .section-detail .details.small {
+    font-size: 1.4rem;
+  }
+  .section-detail .information-card .underline-details {
+    padding: 0.8rem 0;
+  }
+  .section-detail .information-card .underline-details:first-of-type {
+    padding-top: 1.7rem;
+  }
+  .section-detail .information-card .underline-details:last-of-type {
+    padding-bottom: 1.7rem;
+  }
+  .link-button {
+    padding: 0.4rem 0.8rem;
+    background-color: blue;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    right: 24px;
+  }
+  #details-page .row {
+    flex-direction: column-reverse;
+  }
+}
+@media only screen and (min-width: 961px) and (max-width: 1280px) {
+  #search-form input[type="text"] {
+    font-size: 10rem;
+    width: calc(100% - 192px);
+  }
+  button#submitBtn {
+    width: 192px;
+    height: 192px;
+  }
+  #header h1 {
+    font-size: 10rem;
+  }
+  section {
+    padding: 4.8rem 0;
+  }
+  #header h2,
+  section h2,
+  #header label {
+    display: block;
+  }
+  #launch-list .section-headings.v-alignment {
+    display: block;
+    text-align: left;
+    margin-bottom: 4.8rem;
+  }
+  .radio-selectors {
+    display: block;
+    float: none;
+  }
+  .section-list .img-buttons h3 {
+    font-size: 8rem;
+  }
+  .section-list li .img-buttons img {
+    height: 240px;
+  }
+  #details-page .row {
+    flex-direction: column-reverse;
+  }
+  .col-md-5,
+  .col-md-7 {
+    width: 100%;
+  }
+  .section-detail h2 {
     font-size: 8rem;
     word-wrap: anywhere;
     line-height: 8rem;
-    }
-    .section-detail .underline-details {
-        margin: 1.6rem 0;
-        padding: 1.6rem 0.8rem;
-    }
-
   }
+  .section-detail .underline-details {
+    margin: 1.6rem 0;
+    padding: 1.6rem 0.8rem;
+  }
+}
