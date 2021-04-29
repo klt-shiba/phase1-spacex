@@ -247,14 +247,18 @@ section.hidden {
 .status-indicator.failure {
     background-color: red;
 }
-.status-indicator.number {
+.status-indicator.info  {
+    background-color: blue;
+}
+.status-indicator.flight-number {
     background-color: transparent;
     outline-offset: -2px;
 }
-.status-indicator.number.success {
+
+.status-indicator.flight-number.success {
     outline: 2px solid green;
 }
-.status-indicator.number.failure {
+.status-indicator.flight-number.failure {
     outline: 2px solid red;
 }
 .section-detail .underline-details {
@@ -398,15 +402,15 @@ input[type=radio] + label {
     vertical-align: middle;
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid green;
+    border: 2px solid blue;
 }
 input[type=radio]:hover + label {
-    background-color: lightseagreen;
+    background-color: blue;
 } 
 input[type=radio]:checked + label {
        background-image: none;
         outline: 0;
-        background-color:green;
+        background-color:blue;
 }
 .radio-selectors {
     display: inline-block;
@@ -461,6 +465,10 @@ input[type=radio]:checked + label {
 @media only screen and (max-width: 960px) {
     #search-form input[type=text] {
         font-size: 4.0em;
+        width: 100%;
+    }
+    button#submitBtn {
+        display: none;
     }
     #header h1 {
         font-size: 4.0rem;
@@ -553,7 +561,7 @@ input[type=radio]:checked + label {
         flex-direction: column-reverse;
     }
   }
-  @media only screen and (max-width: 1280px) {
+  @media only screen and (min-width: 961px) and (max-width: 1280px) {
     #search-form input[type=text] {
         font-size: 10rem;
         width: calc(100% - 192px);

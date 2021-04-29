@@ -216,10 +216,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const heading = detailsPage.querySelector("h2");
     const summary = detailsPage.querySelector("p");
     const date = detailsPage.querySelector(".date");
-    const flightNumber = detailsPage.querySelector(".status-indicator.number");
-    const statusIndicator = detailsPage.querySelector(
-      ".status-indicator.launch-success"
-    );
+    const flightNumber = detailsPage.querySelector(".flight-number");
+    const statusIndicator = detailsPage.querySelector(".launch-success");
     const informationCard = detailsPage.querySelector(".information-card");
     const articleLink = informationCard.querySelector(".article-link a");
     const pressKitLInk = informationCard.querySelector(".presskit-link a");
