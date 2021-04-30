@@ -31,7 +31,6 @@ div.search {
   width: 100%;
   position: absolute;
   top: 0;
-  left: 0;
   background-color: black;
 }
 input {
@@ -667,6 +666,9 @@ input[type="radio"]:checked + label {
   }
   #details-page .row {
     flex-direction: column-reverse;
+  }
+  button#submitBtn,
+  button#homeBtn {
   }
 }
 @media only screen and (min-width: 961px) and (max-width: 1280px) {
