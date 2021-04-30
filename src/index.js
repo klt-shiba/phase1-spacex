@@ -387,18 +387,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
     for (let item of array) {
       // Store object value of promise
       let el = await fetchCrew(item);
-      let crewMember = new Crew(el.name, el.status, el.agency, el.image);
+      let crewMember = new Crew(
+        el.name,
+        el.status,
+        el.agency,
+        el.image,
+        el.wikipedia
+      );
       crewMember.renderCrew(sectionContainer);
     }
   }
 
   // Create crew objects and methods
   class Crew {
-    constructor(name, status, agency, image) {
+    constructor(name, status, agency, image, wikipedia) {
       this.name = name;
       this.status = status;
       this.agency = agency;
       this.image = image;
+      this.wikipedia = wikipedia;
     }
     renderCrew(container) {
       // Show crew container
@@ -406,10 +413,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let listItem = container.querySelector(".clone-item");
       let cloneItem = listItem.cloneNode(true);
       let img = cloneItem.querySelector("img");
+      let link = cloneItem.querySelector("a");
       let nameLabel = cloneItem.querySelector(".crew-name");
       let crewAgency = cloneItem.querySelector(".crew-agency");
 
       cloneItem.classList.remove("hidden");
+      link.href = this.wikipedia;
       img.src = this.image;
       crewAgency.innerHTML = this.agency;
       nameLabel.innerHTML = this.name;

@@ -372,13 +372,19 @@ section.hidden {
 .crew-list-wrapper .underline-details {
   padding: 1.6rem 0;
 }
+.crew-list-wrapper .list-button span {
+  display: block;
+  width: 100%;
+}
 .information-card .sub-section-container {
   margin-bottom: 4rem;
 }
 .payload-list-items::marker {
   content: "";
 }
-.crew-name {
+.crew-name,
+.details.heading.small,
+.accordion-block {
   font-weight: 600;
 }
 .list-button {
@@ -392,7 +398,7 @@ a.list-button {
   width: 100%;
   display: block;
   padding: 0 1.6rem;
-  border-radius: 8px;
+  border-radius: 4px;
   text-decoration: none;
   margin: 0.8rem 0;
   cursor: pointer;
@@ -408,6 +414,12 @@ a.list-button:hover .details {
   color: black;
   transition: all 0.5s ease-in-out;
 }
+.crew-list-wrapper a.list-button:first-of-type {
+  margin-top: 0.8rem;
+}
+.crew-list-wrapper a.list-button:last-of-type {
+  margin-bottom: 0.8rem;
+}
 a.list-button:first-of-type {
   margin-top: 1.6rem;
 }
@@ -419,7 +431,7 @@ a.list-button .underline-details:after {
   font-size: 1.7rem;
   color: white;
   float: right;
-  margin-left: 5px;
+  margin-top: -2px;
   opacity: 0.8;
   transition: all 0.5s ease-in-out;
 }
@@ -591,7 +603,7 @@ input[type="radio"]:checked + label {
     overflow: hidden;
   }
   .section-detail h2 {
-    font-size: 2rem;
+    font-size: 5rem;
     word-wrap: anywhere;
     line-height: 2.4rem;
   }
@@ -611,8 +623,7 @@ input[type="radio"]:checked + label {
     line-height: 2.4rem;
   }
   .accordion-block {
-    padding: 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1.5rem;
   }
   .section-detail h3 {
@@ -633,10 +644,10 @@ input[type="radio"]:checked + label {
     padding: 0.8rem 0;
   }
   .section-detail .information-card .underline-details:first-of-type {
-    padding-top: 1.7rem;
+    padding-top: 1.4rem;
   }
   .section-detail .information-card .underline-details:last-of-type {
-    padding-bottom: 1.7rem;
+    padding-bottom: 1.4rem;
   }
   .link-button {
     padding: 0.4rem 0.8rem;
