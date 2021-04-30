@@ -366,27 +366,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     for (let item of array) {
       // Store object value of promise
       let el = await fetchPayload(item);
-      let listClone = payloadListTemplate.cloneNode(true);
-      let payLoadType = listClone.querySelector(".payload-type");
-      let customerType = listClone.querySelector(".customer-type");
-      let manufacturerType = listClone.querySelector(".manufacturer-type");
-      let nationalityType = listClone.querySelector(".nationality-type");
-      let weightType = listClone.querySelector(".weight-type");
-      let capsuleNumber = listClone.querySelector(".capsule-number");
-      let button = listClone.querySelector("button");
-      // Add new payload list item
-      payloadListContainer.append(listClone);
-      listClone.classList.remove("hidden");
-      // Populate payload details
-      console.log(el);
-      capsuleNumber.innerHTML = array.indexOf(item) + 1;
-      payLoadType.innerHTML = el.type;
-      customerType.innerHTML = el.customers;
-      manufacturerType.innerHTML = el.manufacturers;
-      nationalityType.innerHTML = el.nationalities;
-      weightType.innerHTML = el.mass_kg + "kg";
-
-      accordionInteraction(button);
+      let payloadNumber = item.indexOf(el);
+      let payLoad = new Payload(
+        el.type,
+        el.customers,
+        el.nationalities,
+        el.mass_kg,
+        el.manufacturers
+      );
+      payLoad.renderPayload(
+        payloadListContainer,
+        payloadListTemplate,
+        payloadNumber
+      );
     }
   }
   // Load crewObject
@@ -435,15 +427,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
   // To do add payload items
   class Payload {
-    constructor(type, customer, nationalities, mass_kg, manufacturers) {
+    constructor(type, customers, nationalities, mass_kg, manufacturers) {
       this.type = type;
-      this.customer = customer;
+      this.customers = customers;
       this.nationalities = nationalities;
       this.mass_kg = mass_kg;
       this.manufacturers = manufacturers;
     }
-    renderPayload(container) {
-      let listClone = payloadListTemplate.cloneNode(true);
+    renderPayload(container, listTemplate, index) {
+      let listClone = listTemplate.cloneNode(true);
       let payLoadType = listClone.querySelector(".payload-type");
       let customerType = listClone.querySelector(".customer-type");
       let manufacturerType = listClone.querySelector(".manufacturer-type");
@@ -451,6 +443,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let weightType = listClone.querySelector(".weight-type");
       let capsuleNumber = listClone.querySelector(".capsule-number");
       let button = listClone.querySelector("button");
+
+      // Add new payload list item
+      container.append(listClone);
+      listClone.classList.remove("hidden");
+      // Populate payload details
+      capsuleNumber.innerHTML = index + 2;
+      payLoadType.innerHTML = this.type;
+      customerType.innerHTML = this.customers;
+      manufacturerType.innerHTML = this.manufacturers;
+      nationalityType.innerHTML = this.nationalities;
+      weightType.innerHTML = this.mass_kg + "kg";
+
+      accordionInteraction(button);
     }
   }
   goHome();
