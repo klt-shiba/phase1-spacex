@@ -24,17 +24,14 @@
         <div class="subline dec"></div>
       </div>
       <h1>SpaceX</h1>
-      <nav class="hidden">
-        <div class="nav-option"><a class="nav-link">Home</a></div>
-        <div class="nav-option"><a class="nav-link">Menu item</a></div>
-      </nav>
       <div class="search">
         <div class="search-bar">
-          <form id='search-form' action="https://api.spacexdata.com/v4/launches/query" method="POST">
+          <form id='search-form' action="" method="POST">
             <input id='search' type='text' name='query' placeholder="SpaceX">
             <!-- <input type='submit' name='' placeholder="&#X1F50D" id='submitBtn' /> -->
             <button id='submitBtn' class="search-button">&#X1F50D</button>
           </form>
+          <button id='homeBtn' class="search-button hidden">&#128640</button>
         </div>
       </div>
     </div>
@@ -48,7 +45,7 @@
               <h2>All Launches</h2>
               <div id="radio-filters" class="float-right radio-selectors">
                 <input type="radio" id="radio1" name="radios" value="Random">
-                <label for="radio1" class="radio-button">Random</label>
+                <label for="radio1" class="radio-button">Feeling lucky</label>
                 <input type="radio" id="radio2" name="radios" value="Latest Launch">
                 <label for="radio2" class="radio-button">Latest flight</label>
                 <input type="radio" id="radio3" name="radios" value="Something else">
@@ -83,7 +80,7 @@
     <div class="container-fluid section-heading">
       <div class="row">
         <div class="section-headings col-md-12 v-alignment">
-          <h2>Search results for: <span class="search-result-playback">James</span></h2>
+          <h2>Search results for: <span class="search-result-playback"></span></h2>
           </p>
         </div>
       </div>

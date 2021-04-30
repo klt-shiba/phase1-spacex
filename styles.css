@@ -41,18 +41,22 @@ input {
   width: 4.8rem;
   height: 4.8rem;
 }
-
-button#submitBtn {
+button#homeBtn.hidden {
+  display: none;
+}
+button#submitBtn,
+button#homeBtn {
   width: 308px;
   height: 308px;
   border-radius: 0px;
   border: 0;
-  background-color: #111;
-  font-size: 4.8rem;
+  background-color: black;
+  font-size: 8rem;
   transition: all 0.5s ease-in-out;
 }
-button#submitBtn:hover {
-  background-color: black;
+button#submitBtn:hover,
+button#homeBtn:hover {
+  background-color: #7a04eb;
   transition: all 0.5s ease-in-out;
 }
 #img-container {
@@ -62,6 +66,7 @@ section {
   padding: 7.2rem 0;
 }
 .search-bar {
+  display: flex;
 }
 #img-container img,
 .img-container img {
@@ -162,7 +167,7 @@ section.hidden {
   transition: all 0.5s ease-in-out;
 }
 .section-list li .img-buttons.success:hover {
-  background-color: #1afe49;
+  background-color: #0be236;
   transition: all 0.5s ease-in-out;
 }
 .section-list li .img-buttons.failure:hover {
@@ -256,7 +261,7 @@ section.hidden {
   color: black;
 }
 .status-indicator.success {
-  background-color: #1afe49;
+  background-color: #0be236;
 }
 .status-indicator.failure {
   background-color: red;
@@ -275,7 +280,7 @@ section.hidden {
 }
 
 .status-indicator.flight-number.success {
-  outline: 2px solid #1afe49;
+  outline: 2px solid #0be236;
 }
 .status-indicator.flight-number.failure {
   outline: 2px solid red;
@@ -501,6 +506,10 @@ input[type="radio"]:checked + label {
 }
 .section-headings {
   justify-content: space-between;
+}
+#launch-list .section-headings,
+#search-results .section-headings {
+  margin-bottom: 3.2rem;
 }
 /* Loader */
 .slider {

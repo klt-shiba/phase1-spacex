@@ -1,14 +1,12 @@
 window.addEventListener("DOMContentLoaded", (event) => {
   const searchField = document.getElementById("search");
   const submitBtn = document.getElementById("submitBtn");
-  const sectionCta = document.querySelectorAll(".section-cta");
   const listTemplate = document.querySelector(".clone-list");
-  const launchListSection = document.getElementById("launch-list");
   const sections = document.querySelectorAll("section");
   const detailsPage = document.getElementById("details-page");
-  const resultsPage = document.getElementById("search-results");
   const radioGroup = document.getElementById("radio-filters");
   const radioButtonArray = radioGroup.querySelectorAll("input");
+  const hmeBtn = document.getElementById("homeBtn");
   let setChecked = (radioButtonArray[0].checked = true);
   searchField.value = "";
 
@@ -19,18 +17,30 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     return a;
   };
+  // Button to show launch-list section and initialise launch list
+  let goHome = () => {
+    hmeBtn.addEventListener("click", function (e) {
+      let sectionContainer = document.getElementById("launch-list");
+      toggleSections(sectionContainer.id);
+      loadLaunchList(setChecked);
+    });
+  };
+  // Hide/ Show the selected section
   let toggleSections = (s) => {
     // s = the section id
     togglePendingState();
     for (let section of sections) {
       console.log(section.id);
       if (section.id === s) {
-        section.classList.remove("hidden");
+        setTimeout(function () {
+          section.classList.remove("hidden");
+        }, 3000);
       } else {
         section.classList.add("hidden");
       }
     }
   };
+  // search bar interaction
   let searchBar = () => {
     // Search bar
     submitBtn.addEventListener("click", function (e) {
@@ -69,6 +79,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     });
   };
+  // add accordion interaction
   let accordionInteraction = (button) => {
     button.addEventListener("click", function (e) {
       console.log("working");
@@ -122,6 +133,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // Show relevant section
     toggleSections(sectionContainer.id);
+
+    //Show Home button
+    hmeBtn.classList.remove("hidden");
 
     // Playback users search in the results heading
     searchPlayback.innerHTML = string;
@@ -201,17 +215,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let renderInfoPage = (info, payload) => {
     // Clear search bar
     searchField.value = "";
+    //Show Home button
+    hmeBtn.classList.remove("hidden");
 
-    // Hide/Show the correct section
-    for (let section of sections) {
-      if (section.id === "details-page") {
-        setTimeout(function () {
-          section.classList.remove("hidden");
-        }, 3000);
-      } else {
-        section.classList.add("hidden");
-      }
-    }
+    // Show relevant section
+    toggleSections(detailsPage.id);
+
     const imgList = detailsPage.querySelector(".img-container");
     const heading = detailsPage.querySelector("h2");
     const summary = detailsPage.querySelector("p");
@@ -397,7 +406,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       crewMember.renderCrew(sectionContainer);
     }
   }
-
   // Create crew objects and methods
   class Crew {
     constructor(name, status, agency, image, wikipedia) {
@@ -425,7 +433,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       container.append(cloneItem);
     }
   }
-
   // To do add payload items
   class Payload {
     constructor(type, customer, nationalities, mass_kg, manufacturers) {
@@ -446,6 +453,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let button = listClone.querySelector("button");
     }
   }
+  goHome();
   searchBar();
   loadLaunchList(setChecked);
   onSelectRenderArray();
