@@ -219,9 +219,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const flightNumber = detailsPage.querySelector(".flight-number");
     const statusIndicator = detailsPage.querySelector(".launch-success");
     const informationCard = detailsPage.querySelector(".information-card");
-    const articleLink = informationCard.querySelector(".article-link a");
-    const pressKitLInk = informationCard.querySelector(".presskit-link a");
-    const youtubeLink = informationCard.querySelector(".youtube-link a");
+    const articleLink = informationCard.querySelector("a.article-link");
+    const pressKitLInk = informationCard.querySelector("a.presskit-link");
+    const youtubeLink = informationCard.querySelector("a.youtube-link");
 
     // Check if launch was successful or failure and apply correct styling
     if (info.success === true) {
