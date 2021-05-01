@@ -23,6 +23,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let sectionContainer = document.getElementById("launch-list");
       toggleSections(sectionContainer.id);
       loadLaunchList(setChecked);
+      hmeBtn.classList.add("hidden");
     });
   };
   // Hide/ Show the selected section
@@ -362,6 +363,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const payloadListContainer = container.querySelector(
       ".payload-list-wrapper"
     );
+    payloadListContainer.innerHTML = "";
     // Loop through each payload ID in Payload object
     for (let item of array) {
       // Store object value of promise
