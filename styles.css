@@ -667,9 +667,6 @@ input[type="radio"]:checked + label {
   #details-page .row {
     flex-direction: column-reverse;
   }
-  button#submitBtn,
-  button#homeBtn {
-  }
 }
 @media only screen and (min-width: 961px) and (max-width: 1280px) {
   #search-form input[type="text"] {

@@ -158,14 +158,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
       .then(function (object) {
         let sectionContainer = document.getElementById("launch-list");
         let imgList = sectionContainer.querySelector(".img-container");
-        imgList.innerHTML = "";
         //Check if all objects have img srcs
         let launches = object.filter((el) => {
           return el.links.flickr.original.length !== 0;
         });
-        // Shuffle launches so list is random each time
-        let shuffleLaunches = shuffle(launches).slice(0, 24);
-
         return renderList(sortArray(launches, radioValue), imgList);
       })
       .catch(function (error) {
@@ -197,6 +193,42 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
       });
     }
+  };
+  // Render each list element with launch data in the launch list section
+  let renderList = (array, imgContainer) => {
+    setTimeout(function () {
+      // iterate over the array of launches
+      for (launch of array) {
+        let imgPath = shuffle(launch.links.flickr.original);
+        let cloneList = listTemplate.cloneNode(true);
+        cloneList.classList.remove("hidden");
+        imgContainer.append(cloneList);
+        let img = cloneList.querySelector(".img-tiles");
+        let heading = cloneList.querySelector(".list-item-heading");
+        let button = cloneList.querySelector("button");
+
+        // Add correct hover effect for status of launch
+        if (launch.success === true) {
+          button.classList.add("success");
+        } else {
+          button.classList.add("failure");
+        }
+
+        // Add image source and Heading
+        img.src = imgPath;
+        heading.innerText = `${launch.name}`;
+        let launchDetails = launch;
+        let payloadDetails = launch.payloads;
+        console.log(payloadDetails);
+
+        // Add on click event for list to each launch
+        button.addEventListener("click", function (e) {
+          console.log(launchDetails);
+          togglePendingState();
+          renderInfoPage(launchDetails, payloadDetails);
+        });
+      }
+    }, 3000);
   };
   // Update timestamp to readable dates
   let readableDates = (date) => {
@@ -262,6 +294,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     // Photos Array
     let photos = info.links.flickr.original;
 
+    imgList.innerHTML = "";
     // Populate photos
     for (let photo of photos) {
       let img = document.createElement("img");
@@ -273,42 +306,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     checkCrew(crewArray);
     loadPayload(payload, informationCard);
     loadCrew(crewArray, informationCard);
-  };
-  // Render each list element with launch data
-  let renderList = (array, imgContainer) => {
-    setTimeout(function () {
-      // iterate over the array of launches
-      for (launch of array) {
-        let imgPath = shuffle(launch.links.flickr.original);
-        let cloneList = listTemplate.cloneNode(true);
-        cloneList.classList.remove("hidden");
-        imgContainer.append(cloneList);
-        let img = cloneList.querySelector(".img-tiles");
-        let heading = cloneList.querySelector(".list-item-heading");
-        let button = cloneList.querySelector("button");
-
-        // Add correct hover effect for status of launch
-        if (launch.success === true) {
-          button.classList.add("success");
-        } else {
-          button.classList.add("failure");
-        }
-
-        // Add image source and Heading
-        img.src = imgPath;
-        heading.innerText = `${launch.name}`;
-        let launchDetails = launch;
-        let payloadDetails = launch.payloads;
-        console.log(payloadDetails);
-
-        // Add on click event for list to each launch
-        button.addEventListener("click", function (e) {
-          console.log(launchDetails);
-          togglePendingState();
-          renderInfoPage(launchDetails, payloadDetails);
-        });
-      }
-    }, 3000);
   };
   let checkCrew = (object) => {
     if (object.length > 0) {
