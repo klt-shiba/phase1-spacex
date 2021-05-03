@@ -80,19 +80,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     });
   };
-  // add accordion interaction
-  let accordionInteraction = (button) => {
-    button.addEventListener("click", function (e) {
-      console.log("working");
-      this.classList.toggle("active");
-      let panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  };
   // Fetch Payload of ID
   let fetchPayload = (uid) => {
     // Empty array
@@ -108,6 +95,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         console.log(error);
       });
   };
+  // Fetch Crew of ID
   let fetchCrew = (uid) => {
     return fetch(`https://api.spacexdata.com/v4/crew/${uid}`)
       .then(function (response) {
@@ -121,6 +109,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         console.log(error);
       });
   };
+  //Show search results based on search fetch results
   let renderSearch = (array, string) => {
     let sectionContainer = document.getElementById("search-results");
     let imgList = sectionContainer.querySelector(".img-container");
@@ -193,6 +182,46 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
       });
     }
+  };
+  // function to sort an array by certain criterias
+  let sortArray = (array, radioValue) => {
+    const launchObject = array;
+    // on page load order return array
+    let decideSortType = () => {
+      // If option 0 is selected randomize the order of the array
+      if (radioValue === radioButtonArray[0].checked) {
+        let randomOrder = shuffle(launchObject).slice(0, 24);
+        return randomOrder.slice(0, 10);
+      } else if (radioValue === radioButtonArray[1].checked) {
+        let flightNumber = launchObject.sort((a, b) => {
+          if (a.flight_number > b.flight_number) {
+            return -1;
+          }
+          if (a.flight_number < b.flight_number) {
+            return 1;
+          }
+          return 0;
+        });
+        return flightNumber.slice(0, 10);
+      } else if (radioValue === radioButtonArray[2].checked) {
+        console.log("3 is working");
+        let alphabeticalorder = launchObject.sort((a, b) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+        return alphabeticalorder.slice(0, 10);
+      } else {
+        let randomOrder = shuffle(launchObject).slice(0, 24);
+        return randomOrder.slice(0, 10);
+      }
+    };
+    return decideSortType();
+    // console.log(decideSortType())
   };
   // Render each list element with launch data in the launch list section
   let renderList = (array, imgContainer) => {
@@ -304,55 +333,30 @@ window.addEventListener("DOMContentLoaded", (event) => {
     // Create crew array
     let crewArray = info.crew;
     checkCrew(crewArray);
+    // Load Paylaod
     loadPayload(payload, informationCard);
     loadCrew(crewArray, informationCard);
   };
+  // Add accordion interaction
+  let accordionInteraction = (button) => {
+    button.addEventListener("click", function (e) {
+      console.log("working");
+      this.classList.toggle("active");
+      let panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  };
+  // Check whether there is crew or not in a launch
   let checkCrew = (object) => {
     if (object.length > 0) {
       console.log("has crew");
     } else {
       console.log("No crew");
     }
-  };
-  // function to sort an array by certain criterias
-  let sortArray = (array, radioValue) => {
-    const launchObject = array;
-    // on page load order return array
-    let decideSortType = () => {
-      // If option 0 is selected randomize the order of the array
-      if (radioValue === radioButtonArray[0].checked) {
-        let randomOrder = shuffle(launchObject).slice(0, 24);
-        return randomOrder.slice(0, 10);
-      } else if (radioValue === radioButtonArray[1].checked) {
-        let flightNumber = launchObject.sort((a, b) => {
-          if (a.flight_number > b.flight_number) {
-            return -1;
-          }
-          if (a.flight_number < b.flight_number) {
-            return 1;
-          }
-          return 0;
-        });
-        return flightNumber.slice(0, 10);
-      } else if (radioValue === radioButtonArray[2].checked) {
-        console.log("3 is working");
-        let alphabeticalorder = launchObject.sort((a, b) => {
-          if (a.name < b.name) {
-            return -1;
-          }
-          if (a.name > b.name) {
-            return 1;
-          }
-          return 0;
-        });
-        return alphabeticalorder.slice(0, 10);
-      } else {
-        let randomOrder = shuffle(launchObject).slice(0, 24);
-        return randomOrder.slice(0, 10);
-      }
-    };
-    return decideSortType();
-    // console.log(decideSortType())
   };
   // Load payload object
   async function loadPayload(array, container) {
@@ -365,7 +369,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     for (let item of array) {
       // Store object value of promise
       let el = await fetchPayload(item);
-      let payloadNumber = item.indexOf(el);
+      let payloadNumber = array.indexOf(item);
+      console.log(payloadNumber);
       let payLoad = new Payload(
         el.type,
         el.customers,
@@ -383,7 +388,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // Load crewObject
   async function loadCrew(array, container) {
     const sectionContainer = container.querySelector(".crew-list-wrapper");
-
+    // Loop through each crew ID in Payload object
     for (let item of array) {
       // Store object value of promise
       let el = await fetchCrew(item);
@@ -447,7 +452,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       container.append(listClone);
       listClone.classList.remove("hidden");
       // Populate payload details
-      capsuleNumber.innerHTML = index + 2;
+      capsuleNumber.innerHTML = index + 1;
       payLoadType.innerHTML = this.type;
       customerType.innerHTML = this.customers;
       manufacturerType.innerHTML = this.manufacturers;
