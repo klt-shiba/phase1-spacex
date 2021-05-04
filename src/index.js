@@ -151,6 +151,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         let launches = object.filter((el) => {
           return el.links.flickr.original.length !== 0;
         });
+        imgList.innerHTML = "";
         return renderList(sortArray(launches, radioValue), imgList);
       })
       .catch(function (error) {
